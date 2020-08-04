@@ -1,10 +1,12 @@
  > Remove prompt text (lines beginning with "\>") and replace with your project specifics (including this prompt)
  > Replace anything between \<...\> with your project specifics and remove angle brackets. 
-# \<Project title\>
+# FlashCards
  > Your author list below should include links to all members GitHub and should begin with a "\>"
  
- > Authors: \<[Jeffrey McDaniel](https://github.com/jmcda001)\>
- 
+ > Authors: [Sophie Si](https://github.com/sophie-si)  
+Authors: [Erik Kanamori](https://github.com/erik-kan)  
+Authors: [Jonathan Kim](https://github.com/jonathanykim)  
+
  > You will be forming a group of **TWO - THREE** students and work on an interesting project that you will propose yourself (in this `README.md` document). You can pick any project that you'd like, but it needs ot implement three design patterns. Each of the members in a group is expected to work on at least one design pattern and its test cases. You can, of course, help each other, but it needs to be clear who will be responsible for which pattern and for which general project features.
  
  > ## Expectations
@@ -23,6 +25,30 @@
  >   * [toolname](link) - Short description
  > * What will be the input/output of your project?
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+
+* Why is it important or interesting to you?
+	- One of the things led to our decision of the project is that what we value most is the projects utility a well as its potential to be continuously improved upon
+	- Flashcards can be made to become something that is functional to the everyday college student as a great way to study for various classes
+	- Flashcards can also be extended beyond simple words. It can be used with images, audio, etc
+	- It can also be given a collaborative functionality so students can create and study them together
+* What languages/tools/technologies do you plan to use?
+	- C++
+	- Putty
+	- Hammer remote servers
+	- Git hub
+* What will be the input/output of your project?
+	- Input 
+		+ Commands 
+			+ Create flashcard
+			+ Add definition
+			+ Add word
+		+ Words
+		+ Definitions
+		+ Navigation
+		+ Search
+	- Output
+		+ Flash Card Sides
+		+ Folders
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
