@@ -1,6 +1,6 @@
  > Remove prompt text (lines beginning with "\>") and replace with your project specifics (including this prompt)
  > Replace anything between \<...\> with your project specifics and remove angle brackets. 
-# FlashCards
+# Calandar
  > Your author list below should include links to all members GitHub and should begin with a "\>"
  
  > Authors: [Sophie Si](https://github.com/sophie-si)  
@@ -28,9 +28,16 @@
 
 * Why is it important or interesting to you?
 	- One of the things led to our decision of the project is that what we value most is the projects utility a well as its potential to be continuously improved upon
-	- Flashcards can be made to become something that is functional to the everyday college student as a great way to study for various classes
-	- Flashcards can also be extended beyond simple words. It can be used with images, audio, etc
-	- It can also be given a collaborative functionality so students can create and study them together
+	- A calendar application can be made to become something that is functional to the everyday college student as a great way to study for various classes
+	- Calendar would have to connect with the actual time and date to be accurate 
+	- It can also be given a collaborative functionality so people and families can create schedules and plan projects or vacation trips together
+	- Can be used to also set up reminders for birthdays, holidays, and other special events
+	- Can set reminders or messages for certain individuals on a specific day
+	- Can repeat specific schedules, reminders or events, daily/weekly/monthly/annually so user does not need to create it every time
+	- Can provide the current date
+	- Can look up specific dates and provide information such as any events, the day of the week, and numerical date
+	- Can use either numerical date or day of the week based off of current date to determine which date to pull info of
+	- Each day will need to have is own unique set of information that have similar foundations to each other but may contain different info as things are added or removed
 * What languages/tools/technologies do you plan to use?
 	- C++
 	- Putty
@@ -39,16 +46,21 @@
 * What will be the input/output of your project?
 	- Input 
 		+ Commands 
-			+ Create flashcard
-			+ Add definition
-			+ Add word
-		+ Words
-		+ Definitions
-		+ Navigation
-		+ Search
+			+ Create event
+			+ Add message
+			+ Repeat schedules 
+			+ Clear the day of all edits
+			+ Get date
+
+		+ Events
+			+ Reminders
+			+ Search
+				+ By date
+				+ By event/reminder
 	- Output
-		+ Flash Card Sides
-		+ Folders
+		+ Information of created events/reminders etc
+		+ Days, weeks, months, years
+		+ Command help page
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
