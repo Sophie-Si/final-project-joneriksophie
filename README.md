@@ -17,6 +17,7 @@
  >   * C/C++, Java, Python
  > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA
  > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
+	
 
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include
@@ -26,6 +27,10 @@
  > * What will be the input/output of your project?
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
 
+* Design patterns 
+ 	- Composite used to create an event storage
+	- Strategy used to apply forms of printing
+	- Singleton used in the formation ofthe menu
 * Why is it important or interesting to you?
 	- One of the things led to our decision of the project is that what we value most is the projects utility a well as its potential to be continuously improved upon
 	- A calendar application can be made to become something that is functional to the everyday college student as a great way to study for various classes
@@ -72,6 +77,8 @@
  > * Break down the first "Epic" into smaller user stories (issues) and assign them to the appropriate team member.
 ## Class Diagram
  > Include a class diagram and a description of the diagram. This should be in sufficient detail that another group could pick up the project this point and successfully complete it.
+ 
+ ![resources](https://docs.google.com/drawings/d/e/2PACX-1vTdH7ktFnFE14cIfMWRMulRcdcmpVhsQiAIHfuYTgICW-Q4Bd_vNtbBDUaNnixaRclXstnm44kwcTEU/pub?w=960&h=720)
  
  > ## Phase III
  > You will need to schedule two check-in's with the TA (during lab hours or office hours) where your entire group will meet with them and discuss:
