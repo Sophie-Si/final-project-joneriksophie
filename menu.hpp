@@ -3,6 +3,10 @@
 
 
 class Menu {
+private:
+    Term* root;
+
+
 
 public:
     // Constructor

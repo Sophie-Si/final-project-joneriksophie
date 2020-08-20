@@ -1,6 +1,13 @@
 #include "menu.hpp"
 #include <string>
 
+Menu::Menu() {
+    root = new Term("AllTime");
+    Term* CurrYear = new Term("year2020");
+    Term* January = new Term("January");
+    
+}
+
 void Menu::PrintMenu() {
     string input;
     cout << "Menu: " << endl
@@ -16,7 +23,25 @@ void Menu::PrintMenu() {
     cout << endl;
 
     if (input == "a" || input == "A") {
-	// AddObject(new Event())
+	std::string eventName;
+	int yearNum;
+	int monthNum;
+	int dayNum;
+
+	std::cout << "Enter event name: " << std::endl;
+	std::getline(cin, eventName);
+	std::cout << std::endl;
+	std::cout << "Enter date year: " << std::endl;
+	std::cin >> yearNum;
+	std::cout << std::endl;
+	std::cout << "Enter date month: " <<std::endl;
+	std::cin >> monthNum << std::endl;
+	std::cout << std::endl;
+	std::cout << "Enter date day: " << std::endl;
+	std::cin >> dayNum;
+	std::cout << std::endl;
+	
+	AddObject(new Event());
     }
     else if (input == "b" || input == "B") {
 	// RemoveObject(event)
@@ -39,7 +64,9 @@ void Menu::PrintMenu() {
 }
 
 void Menu::AddObject(event) {
-   
+    if (event->month == "January") {
+	//AllTime->January->EventsList.push_back(event);
+    }
 
     // ->PrintMenu(); 
 }
