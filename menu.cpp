@@ -1,11 +1,37 @@
 #include "menu.hpp"
 #include <string>
+#include <iostream>
 
 Menu::Menu() {
     root = new Term("AllTime");
-    Term* CurrYear = new Term("year2020");
-    Term* January = new Term("January");
-    
+    storage* CurrYear = new term("year2020");
+    storage* January = new term("January");
+    storage* February = new term("February");
+    storage* March = new term("March");
+    storage* April = new term("April");
+    storage* May = new term("May");
+    storage* June = new term("June");
+    storage* July = new term ("July");
+    storage* August = new term("August");
+    storage* September = new term("September");
+    storage* October = new term("October");
+    storage* November = new term("November");
+    storage* December = new term("December");
+
+    root->vect.push_back(CurrYear);
+
+    CurrYear->vect.push_back(January);
+    CurrYear->vect.push_back(February);
+    CurrYear->vect.push_back(March);
+    CurrYear->vect.push_back(April);
+    CurrYear->vect.push_back(May);
+    CurrYear->vect.push_back(June);
+    CurrYear->vect.push_back(July);
+    CurrYear->vect.push_back(August);
+    CurrYear->vect.push_back(September);
+    CurrYear->vect.push_back(October);
+    CurrYear->vect.push_back(November);
+    CurrYear->vect.push_back(December);
 }
 
 void Menu::PrintMenu() {
@@ -41,7 +67,8 @@ void Menu::PrintMenu() {
 	std::cin >> dayNum;
 	std::cout << std::endl;
 	
-	AddObject(new Event());
+	storage* eventObj = new event(eventName, dayNum, monthNum, yearNum);
+	AddObject(eventObj);
     }
     else if (input == "b" || input == "B") {
 	// RemoveObject(event)
@@ -59,16 +86,24 @@ void Menu::PrintMenu() {
     else if (input == "q" || input == "Q") {
 	exit (1):
     }
+    else {
+	std::cout << "Invalid input. Try again." << std::endl;
+	PrintMenu();
+    }
     
-    cout << endl;
+    //cout << endl;
 }
 
 void Menu::AddObject(event) {
-    if (event->month == "January") {
-	//AllTime->January->EventsList.push_back(event);
-    }
+    /*if (event->month == 1) { // 1 = January
+	CurrYear->vect.at(0)->vect.push_back(event);
+    }*/
 
-    // ->PrintMenu(); 
+    int val = event->getMonth();
+
+    CurrYear->vect.at(val - 1)->vect.push_back(event);
+
+    PrintMenu(); 
 }
 
 void Menu::RemoveObject(event) {
