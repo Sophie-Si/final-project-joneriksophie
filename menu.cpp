@@ -1,135 +1,191 @@
 #include "menu.hpp"
+#include "storage.hpp"
+#include "event.hpp"
+#include "term.hpp"
 #include <string>
 #include <iostream>
+#include <vector>
 
 Menu::Menu() {
-    root = new Term("AllTime");
-    storage* CurrYear = new term("year2020");
-    storage* January = new term("January");
-    storage* February = new term("February");
-    storage* March = new term("March");
-    storage* April = new term("April");
-    storage* May = new term("May");
-    storage* June = new term("June");
-    storage* July = new term ("July");
-    storage* August = new term("August");
-    storage* September = new term("September");
-    storage* October = new term("October");
-    storage* November = new term("November");
-    storage* December = new term("December");
-
-    root->vect.push_back(CurrYear);
-
-    CurrYear->vect.push_back(January);
-    CurrYear->vect.push_back(February);
-    CurrYear->vect.push_back(March);
-    CurrYear->vect.push_back(April);
-    CurrYear->vect.push_back(May);
-    CurrYear->vect.push_back(June);
-    CurrYear->vect.push_back(July);
-    CurrYear->vect.push_back(August);
-    CurrYear->vect.push_back(September);
-    CurrYear->vect.push_back(October);
-    CurrYear->vect.push_back(November);
-    CurrYear->vect.push_back(December);
+    root = new term("AllTime", 0, 0, 0);
 }
-
 void Menu::PrintMenu() {
-    string input;
-    cout << "Menu: " << endl
-    cout << "a) Add event" << endl;
-    cout << "b) Remove event" << endl;
-    cout << "c) Edit event" << endl;
-    cout << "d) Search for event" << endl;
-    cout << "e) Print today's event" << endl;
-    cout << "q) Quit" << endl;
-    cout << "Enter option: " << endl;
+    std::string input;
+    std::cout << "Menu: " << std::endl;
+    std::cout << "a) Add event" << std::endl;
+    std::cout << "b) Remove event" << std::endl;
+    std::cout << "c) Edit event" << std::endl;
+    std::cout << "d) Search for event" << std::endl;
+    std::cout << "e) Print today's event" << std::endl;
+    std::cout << "q) Quit" << std::endl;
+    std::cout << "Enter option: " << std::endl;
 
-    cin >> input;
-    cout << endl;
-
+    std::cin >> input;
+    std::cout << std::endl;
+        
     if (input == "a" || input == "A") {
-	std::string eventName;
-	int yearNum;
-	int monthNum;
-	int dayNum;
+        std::string eventName;
+        int yearNum;
+        int monthNum;
+        int dayNum;
 
-	std::cout << "Enter event name: " << std::endl;
-	std::getline(cin, eventName);
-	std::cout << std::endl;
-	std::cout << "Enter date year: " << std::endl;
-	std::cin >> yearNum;
-	std::cout << std::endl;
-	std::cout << "Enter date month: " <<std::endl;
-	std::cin >> monthNum << std::endl;
-	std::cout << std::endl;
-	std::cout << "Enter date day: " << std::endl;
-	std::cin >> dayNum;
-	std::cout << std::endl;
-	
-	storage* eventObj = new event(eventName, dayNum, monthNum, yearNum);
-	AddObject(eventObj);
+        std::cout << "Enter event name: " << std::endl;
+        std::cin.ignore();
+        std::getline(std::cin, eventName);
+        std::cout << std::endl;
+        std::cout << "Enter date year: " << std::endl;
+        std::cin >> yearNum;
+        std::cout << std::endl;
+        std::cout << "Enter date month: " <<std::endl;
+        std::cin >> monthNum;
+        std::cout << std::endl;
+        std::cout << "Enter date day: " << std::endl;
+        std::cin >> dayNum;
+        std::cout << std::endl;
+
+        // storage* newEvent = new event(eventName, dayNum, monthNum, yearNum);
+        // AddObject(newEvent);
+        AddObject(new event(eventName, dayNum, monthNum, yearNum));
+        PrintMenu();
     }
     else if (input == "b" || input == "B") {
-	// RemoveObject(event)
-    } 
-    else if (input == "c" || input ==  "C") {
-	// EditObject(event)
+        std::string nameEvent;
+        std::string wordYear, wordMonth;
+
+        std::cout << "Enter the name of the event you would like to remove: " << std::endl;
+        std::getline(std::cin, nameEvent);
+        std::cout << "Enter the year this event is happening(in number form): " << std::endl;
+        std::cin >> wordyear;
+        std::cout << std::endl;
+        std::cout << "enter the month this event is happening(in word form): " << std::endl;
+        std::cin >> wordmonth;
+        std::cout << std::endl;
+
+        if (exist(nameevent, wordmonth, wordyear)) {
+            removeobject(nameevent, wordmonth, wordyear);
+        }
+        else {
+            std::cout << "event could not be found" << std::endl;
+        }
+
+        printmenu();
     }
-    else if (input == "d" || input == "D") {
-	// SearchObject(event)
-	// use exist function instead of search
-    }
-    else if (input == "e" || input == "E") {
-	// PrintTodayEvent()
-    }
-    else if (input == "q" || input == "Q") {
-	exit (1):
+    //else if (input == "c" || input ==  "c") {
+        //editobject(event)
+    //}
+    // else if (input == "d" || input == "d") {
+    //  // searchobject(event)
+    //  // use exist function instead of search
+    //}
+    // else if (input == "e" || input == "e") {
+    //  // printtodayevent()    
+    //}
+    else if (input == "q" || input == "q") {
+        exit (1);
     }
     else {
-	std::cout << "Invalid input. Try again." << std::endl;
-	PrintMenu();
+        std::cout << "invalid input. try again." << std::endl;
+        printmenu();
     }
-    
-    //cout << endl;
+}
+void Menu::AddObject(storage* eventObj) {
+    int yearVal = eventObj->getYear();
+    int monthVal = eventObj->getMonth();
+    std::string yearWord, monthWord;
+    int val, val2;
+
+    yearWord = std::to_string(yearVal);
+
+    if (monthVal == 1) {
+        monthWord = "January";
+    }
+    else if (monthVal == 2) {
+        monthWord = "February";
+    }
+    else if (monthVal == 3) {
+        monthWord = "March";
+    }
+    else if (monthVal == 4) {
+        monthWord = "April";
+    }
+    else if (monthVal == 5) {
+        monthWord = "May";
+    }
+    else if (monthVal == 6) {
+        monthWord = "June";
+    }
+    else if (monthVal == 7) {
+        monthWord = "July";
+    }
+    else if (monthVal == 8) {
+        monthWord = "August";
+    }
+    else if (monthVal == 9) {
+        monthWord = "September";
+    }
+    else if (monthVal == 10) {
+        monthWord = "October";
+    } 
+    else if (monthVal == 11) {
+        monthWord = "November";
+    } 
+    else if (monthVal == 12) {
+        monthWord = "December";
+    }
+ val = root->search(yearWord);
+    if (val == -1) {
+        //root->getVector().push_back(new term(yearWord, 0, 0, yearVal));
+         root->dummyAdd(new term(yearWord, 0, 0, yearVal));
+         val = root->search(yearWord); 
+     }
+     std::cout << root->getNum() << std::endl; //check vector size 
+     std::cout << val << std::endl; // check new object exists in vector
+     std::cout << root->getVector().at(val)->getName() << std::endl; // check name of new object
+   
+    /*val2 = root->getVector().at(val)->search(monthWord);
+    if (val2 == -1) {
+        root->getVector().at(val)->getVector().push_back(new term(monthWord, 0, monthVal, 0));
+        val2 = root->getVector().at(val)->search(monthWord);
+    }
+
+    root->getVector().at(val).getVector().at(val2).push_back(eventObj);*/
 }
 
-void Menu::AddObject(event) {
-    /*if (event->month == 1) { // 1 = January
-	CurrYear->vect.at(0)->vect.push_back(event);
-    }*/
+/*void Menu::RemoveObject(string nameEvent, string wordMonth, string wordYear) {
+    int val = root->getVector()->search(wordYear);
+    int val2 = root->getVector().at(val)->getVector()->search(wordMonth);
+    int val3 = root->getVector().at(val)->getVector().at(val2)->getVector()->search(nameEvent);
 
-    int val = event->getMonth();
+    vector<storage*> v = root->getVector().at(val)->getVector().at(val2)->getVector();
+    root->getVector().at(val)->getVector().at(val2)->getVector().erase(v.begin() + val3);
+}*/
 
-    CurrYear->vect.at(val - 1)->vect.push_back(event);
+//void Menu::EditObject(storage* eventObj) {
 
-    PrintMenu(); 
-}
+//}
 
-void Menu::RemoveObject(event) {
+//bool Menu::SearchObject(storage* eventObj) {
 
+//}
 
-    // ->PrintMenu();
-}
+//void Menu::PrintTodayEvent() {
 
-void Menu::EditObject(event) {
+//}
 
+/*bool Menu::exist(string nameEvent, string wordMonth, string wordYear) {
+    int val = root->getVector()->search(wordYear);
+    if (val == -1) {
+        return false;
+    }
 
-    // ->PrintMenu();
-}
+    int val2 = root->getVector().at(val)->getVector()->search(wordMonth);
+    if (val2 == -1) {
+        return false;
+    }
 
-bool Menu::SearchObject(event) {
-
-
-    // ->PrintMenu();
-}
-
-void Menu::PrintTodayEvent() {
-
-
-    // ->PrintMenu();
-}
-
-bool Menu::exist(event) {
-//check if event exists in list
-}
+    int val3 = root->getVector().at(val)->getVector().at(val2)->getVector()->search(nameEvent);
+    if (val3 != -1) {
+        return true;
+    }
+    return false;
+}*/
