@@ -4,6 +4,8 @@
 #include "storage.hpp"
 #include "event.hpp"
 #include "term.hpp"
+#include "simple_printer.hpp"
+#include "printer.hpp"
 
 using namespace std;
 

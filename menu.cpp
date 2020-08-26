@@ -5,18 +5,20 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include "printer.hpp"
+#include "simple_printer.hpp"
 
 Menu::Menu() {
     root = new term("AllTime", 0, 0, 0);
 }
+
 void Menu::PrintMenu() {
     std::string input;
     std::cout << "Menu: " << std::endl;
     std::cout << "a) Add event" << std::endl;
     std::cout << "b) Remove event" << std::endl;
     std::cout << "c) Edit event" << std::endl;
-    std::cout << "d) Search for event" << std::endl;
-    std::cout << "e) Print today's event" << std::endl;
+    std::cout << "d) Print event" << std::endl;
     std::cout << "q) Quit" << std::endl;
     std::cout << "Enter option: " << std::endl;
 
@@ -43,8 +45,6 @@ void Menu::PrintMenu() {
         std::cin >> dayNum;
         std::cout << std::endl;
 
-        // storage* newEvent = new event(eventName, dayNum, monthNum, yearNum);
-        // AddObject(newEvent);
         AddObject(new event(eventName, dayNum, monthNum, yearNum));
         PrintMenu();
     }
@@ -53,41 +53,115 @@ void Menu::PrintMenu() {
         std::string wordYear, wordMonth;
 
         std::cout << "Enter the name of the event you would like to remove: " << std::endl;
+        std::cin.ignore();
         std::getline(std::cin, nameEvent);
         std::cout << "Enter the year this event is happening(in number form): " << std::endl;
-        std::cin >> wordyear;
+        std::cin >> wordYear;
         std::cout << std::endl;
-        std::cout << "enter the month this event is happening(in word form): " << std::endl;
-        std::cin >> wordmonth;
+        std::cout << "Enter the month this event is happening(in word form): " << std::endl;
+        std::cin >> wordMonth;
         std::cout << std::endl;
 
-        if (exist(nameevent, wordmonth, wordyear)) {
-            removeobject(nameevent, wordmonth, wordyear);
+        if (exist(nameEvent, wordMonth, wordYear)) {
+            RemoveObject(nameEvent, wordMonth, wordYear);
         }
         else {
-            std::cout << "event could not be found" << std::endl;
+            std::cout << "Event could not be found" << std::endl;
         }
 
-        printmenu();
+        PrintMenu();
     }
-    //else if (input == "c" || input ==  "c") {
-        //editobject(event)
-    //}
-    // else if (input == "d" || input == "d") {
-    //  // searchobject(event)
-    //  // use exist function instead of search
-    //}
-    // else if (input == "e" || input == "e") {
-    //  // printtodayevent()    
-    //}
-    else if (input == "q" || input == "q") {
+    // else if (input == "c" || input ==  "C") {
+    //     //     // EditObject(event)
+    //         // }
+    else if (input == "d" || input == "D") {
+        std::string option;
+        std::cout << "Print options: " << std::endl;
+        std::cout << "a) Print event" << std::endl;
+        std::cout << "b) Print events for month" << std::endl;
+        std::cout << "Enter option: " << std::endl;
+
+        std::cin >> option;
+        std::cout << std::endl;
+
+        if (option == "a" || option == "A") {
+            int yearNumber;
+            std::string wordMonth, nameEvent;
+            std::cout << "Enter year of event: " << std::endl;
+            std::cin >> yearNumber;
+            std::cout << std::endl;
+
+            std::cout << "Enter month(capitalized first letter) of event: " << std::endl;
+            std::cin >> wordMonth;
+            std::cout << std::endl;
+
+            std::cout << "Enter name of event: " << std::endl;
+            std::cin.ignore();
+            std::getline(cin, nameEvent);
+            std::cout << std::endl;
+
+            std::string wordYear = std::to_string(yearNumber);
+
+            int num;
+            num = root->search(wordYear);
+            if (num == -1) {
+                std::cout << "No events in this year." << std::endl;
+                PrintMenu();
+            }
+            int num2;
+            num2 = root->getVector().at(num)->search(wordMonth);
+            if (num2 == -1) {
+                std::cout << "No events in this month." << std::endl;
+                PrintMenu();
+            }
+            int num3;
+            num3 = root->getVector().at(num)->getVector().at(num2)->search(nameEvent);
+            if (num3 == -1) {
+                std::cout << "Even cannot be found." << std::endl;
+                PrintMenu();
+            }
+
+            PrintEvent(root->getVector().at(num)->getVector().at(num2)->getVector().at(num3));
+        }
+        else if (option == "b" || option == "B") {
+            int yearNumber;
+            std::string wordMonth, nameEvent;
+            std::cout << "Enter year of event: " << std::endl;
+            std::cin >> yearNumber;
+            std::cout << std::endl;
+
+            std::cout << "Enter month(capitalized first letter) of event: " << std::endl;
+            std::cin >> wordMonth;
+            std::cout << std::endl;
+
+            std::string wordYear = std::to_string(yearNumber);
+
+            int num;
+            num = root->search(wordYear);
+            if (num == -1) {
+                std::cout << "No events in this year." << std::endl;
+                PrintMenu();
+            }
+            int num2;
+            num2 = root->getVector().at(num)->search(wordMonth);
+            if (num2 == -1) {
+                std::cout << "No events in this month." << std::endl;
+                PrintMenu();
+            }
+
+            PrintEvent(root->getVector().at(num)->getVector().at(num2));
+        }
+        PrintMenu();
+    }
+    else if (input == "q" || input == "Q") {
         exit (1);
     }
     else {
-        std::cout << "invalid input. try again." << std::endl;
-        printmenu();
+        std::cout << "Invalid input. Try again." << std::endl;
+        PrintMenu();
     }
 }
+
 void Menu::AddObject(storage* eventObj) {
     int yearVal = eventObj->getYear();
     int monthVal = eventObj->getMonth();
@@ -132,60 +206,52 @@ void Menu::AddObject(storage* eventObj) {
     else if (monthVal == 12) {
         monthWord = "December";
     }
- val = root->search(yearWord);
+
+    val = root->search(yearWord);
     if (val == -1) {
-        //root->getVector().push_back(new term(yearWord, 0, 0, yearVal));
-         root->dummyAdd(new term(yearWord, 0, 0, yearVal));
-         val = root->search(yearWord); 
-     }
-     std::cout << root->getNum() << std::endl; //check vector size 
-     std::cout << val << std::endl; // check new object exists in vector
-     std::cout << root->getVector().at(val)->getName() << std::endl; // check name of new object
-   
-    /*val2 = root->getVector().at(val)->search(monthWord);
-    if (val2 == -1) {
-        root->getVector().at(val)->getVector().push_back(new term(monthWord, 0, monthVal, 0));
+        root->dummyAdd(new term(yearWord, 0, 0, yearVal));
+        val = root->search(yearWord); 
+    }
+    
+    val2 = root->getVector().at(val)->search(monthWord);
+    if (val2 ==-1) {
+        root->getVector().at(val)->dummyAdd(new term(monthWord, 0, monthVal, 0));
         val2 = root->getVector().at(val)->search(monthWord);
     }
 
-    root->getVector().at(val).getVector().at(val2).push_back(eventObj);*/
+    root->getVector().at(val)->getVector().at(val2)->dummyAdd(eventObj);
 }
 
-/*void Menu::RemoveObject(string nameEvent, string wordMonth, string wordYear) {
-    int val = root->getVector()->search(wordYear);
-    int val2 = root->getVector().at(val)->getVector()->search(wordMonth);
-    int val3 = root->getVector().at(val)->getVector().at(val2)->getVector()->search(nameEvent);
+void Menu::RemoveObject(string nameEvent, string wordMonth, string wordYear) {
+    int val = root->search(wordYear);
+    int val2 = root->getVector().at(val)->search(wordMonth);
+    int val3 = root->getVector().at(val)->getVector().at(val2)->search(nameEvent);
 
     vector<storage*> v = root->getVector().at(val)->getVector().at(val2)->getVector();
     root->getVector().at(val)->getVector().at(val2)->getVector().erase(v.begin() + val3);
-}*/
+}
+// void Menu::EditObject(storage* eventObj) {
+//
+// // }
+void Menu::PrintEvent(storage* eventObj) {
+    SimplePrinter printEvent;
+    printEvent.print(eventObj);
+}
 
-//void Menu::EditObject(storage* eventObj) {
-
-//}
-
-//bool Menu::SearchObject(storage* eventObj) {
-
-//}
-
-//void Menu::PrintTodayEvent() {
-
-//}
-
-/*bool Menu::exist(string nameEvent, string wordMonth, string wordYear) {
-    int val = root->getVector()->search(wordYear);
+bool Menu::exist(string nameEvent, string wordMonth, string wordYear) {
+    int val = root->search(wordYear);
     if (val == -1) {
         return false;
     }
 
-    int val2 = root->getVector().at(val)->getVector()->search(wordMonth);
+    int val2 = root->getVector().at(val)->search(wordMonth);
     if (val2 == -1) {
         return false;
     }
 
-    int val3 = root->getVector().at(val)->getVector().at(val2)->getVector()->search(nameEvent);
+    int val3 = root->getVector().at(val)->getVector().at(val2)->search(nameEvent);
     if (val3 != -1) {
         return true;
     }
     return false;
-}*/
+}
