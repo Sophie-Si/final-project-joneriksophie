@@ -24,7 +24,7 @@ public:
     void EditObject(storage* eventObj);
     void PrintEvent(storage* eventObj);
     bool exist(string nameEvent, string wordMonth, string wordYear);
-    void annualEventCreation(storage* EventA)
+    void annualEventCreation(storage* EventA);
     term* getRoot() {
 	return root;
     }

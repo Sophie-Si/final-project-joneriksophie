@@ -45,8 +45,10 @@ void Menu::PrintMenu() {
         std::cout << "Enter date day: " << std::endl;
         std::cin >> dayNum;
         std::cout << std::endl;
-
-        AddObject(new event(eventName, dayNum, monthNum, yearNum));
+	
+	storage* Event = new event(eventName, dayNum, monthNum, yearNum);
+        AddObject(Event);
+	annualEventCreation(Event);
         PrintMenu();
     }
     else if (input == "b" || input == "B") {
@@ -276,7 +278,7 @@ void Menu::annualEventCreation(storage* EventA){
 		string input;
                 bool valid = false;
                 if(!valid){
-                        cout << "how many years do you want to repeat this event? " <<endl;
+                        cout << "How many years do you want to repeat this event? " <<endl;
                         cin >> input;
                         cout << endl;
                         if ((0  == stoi(input) && input == "0")|| stoi(input) !=  0){
@@ -284,7 +286,7 @@ void Menu::annualEventCreation(storage* EventA){
                         }
                 }
 
-                for (int i = 1; i<input+1 ; ++i){
+                for (int i = 1; i<stoi(input)+1 ; ++i){
 			AddObject(new event(EventA->getName(), EventA->getDay(), EventA->getMonth(), EventA->getYear()+i));
 			
                 }
