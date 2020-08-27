@@ -1,3 +1,4 @@
+![CI](https://github.com/cs100/final-project-joneriksophie/workflows/CI/badge.svg)
 # Calendar
  
  > Authors: [Sophie Si](https://github.com/sophie-si)  
