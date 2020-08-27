@@ -229,9 +229,8 @@ void Menu::RemoveObject(string nameEvent, string wordMonth, string wordYear) {
     int val = root->search(wordYear);
     int val2 = root->getVector().at(val)->search(wordMonth);
     int val3 = root->getVector().at(val)->getVector().at(val2)->search(nameEvent);
-
-    vector<storage*> v = root->getVector().at(val)->getVector().at(val2)->getVector();
-    root->getVector().at(val)->getVector().at(val2)->getVector().erase(v.begin() + val3);
+ 
+    root->getVector().at(val)->getVector().at(val2)->remove(val3);
 }
 // void Menu::EditObject(storage* eventObj) {
 //
