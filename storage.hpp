@@ -1,6 +1,7 @@
 #ifndef ___STORAGE_HPP___
 #define ___STORAGE_HPP___
 #include <string>
+#include <vector>
 using namespace std;
 
 class storage{
