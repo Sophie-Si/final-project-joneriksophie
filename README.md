@@ -75,7 +75,7 @@
 ## Installation/Usage
 1. Run `cmake .` in terminal
 2. Run `make` in terminal
-3. Run `prog` in terminal
+3. Run `cal` in terminal
 
 ## Testing
 * Tested & validated with tests in unit_test.cpp
