@@ -7,6 +7,7 @@
 #include <vector>
 #include "printer.hpp"
 #include "simple_printer.hpp"
+#include "md_file_printer.hpp"
 
 Menu::Menu() {
     root = new term("AllTime", 0, 0, 0);
@@ -234,8 +235,21 @@ void Menu::RemoveObject(string nameEvent, string wordMonth, string wordYear) {
 //
 // // }
 void Menu::PrintEvent(storage* eventObj) {
-    SimplePrinter printEvent;
-    printEvent.print(eventObj);
+    std::string option;
+    std::cout << "Enter 'a' to print to terminal." << std::endl;
+    std::cout << "Enter 'b' to print to external file." << std::endl;
+    
+    std::cin >> option;
+    std::cout << endl;
+
+    if (option == "a" || option == "A") {
+        SimplePrinter printEvent;
+        printEvent.print(eventObj);
+    }
+    else if (option == "b" || option == "B") {
+	MdFilePrinter printer;
+	printer.print(eventObj);
+    }
 }
 
 bool Menu::exist(string nameEvent, string wordMonth, string wordYear) {

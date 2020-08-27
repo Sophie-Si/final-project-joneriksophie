@@ -6,6 +6,7 @@
 #include "term.hpp"
 #include "simple_printer.hpp"
 #include "printer.hpp"
+#include "menu.cpp"
 
 using namespace std;
 
