@@ -4,6 +4,25 @@
  > Authors: [Sophie Si](https://github.com/sophie-si)  
  > Authors: [Erik Kanamori](https://github.com/erik-kan)  
  > Authors: [Jonathan Kim](https://github.com/jonathanykim)  
+ 
+## Phase 3 - Final Sprint (8/31/20-9/4/20)
+* Add weeklyEvent Creation function
+* Add monthlyEventCreation function
+* Add dailyEventCreation function
+* Add a function to create all national holidays as events 
+* Save calendar data from previous usage by user / Import output.md to program
+* Implement sort for years and months
+* Finish feature to edit events
+* Add and access description/details for events
+
+## Current features
+* Add events
+* Remove Events
+* Print events to terminal
+* Print events to output.md
+* Specify print group by all-time, year, month, or event
+* Recurring scheduling for event by year
+
 
 ## Project Description
 * Design patterns 
@@ -71,10 +90,12 @@
 ![Display output.md](Image6.png)
 
 ## Installation/Usage
-1. Run `cmake .` in terminal
+1. Run `cmake3 .` in terminal
 2. Run `make` in terminal
-3. Run `cal` in terminal
+3. Run `./cal` in terminal
+4. Follow instructions from user interface and use calendar
 
 ## Testing
 * Tested & validated with tests in `unit_test.cpp` and tests in pertaining header files
 * Also tested via CI tester with github actions. Checks all branches and pull requests to master
+* Run `./test` to see results for tests
