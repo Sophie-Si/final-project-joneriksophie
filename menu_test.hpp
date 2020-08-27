@@ -34,4 +34,13 @@ TEST (Menu, AddMonth) {
     EXPECT_EQ(test->getRoot()->getVector().at(0)->getVector().at(1)->getName(), "April");
 }
 
+TEST (Menu, SameMonth) {
+    Menu* test = new Menu();
+    test->AddObject(new event("Event 1", 4, 10, 2020));
+    test->AddObject(new event("Event 2", 22, 10, 2020));
+    EXPECT_EQ(test->getRoot()->getVector().at(0)->getNum(), 1);
+    EXPECT_EQ(test->getRoot()->getVector().at(0)->getVector().at(0)->getVector().at(0)->getName(), "Event 1");
+    EXPECT_EQ(test->getRoot()->getVector().at(0)->getVector().at(0)->getVector().at(1)->getName(), "Event 2");
+}
+
 #endif //___MENU_TEST_HPP___
