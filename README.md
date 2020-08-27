@@ -44,10 +44,11 @@
 
 ## Class Diagram
 ![resources](https://docs.google.com/drawings/d/e/2PACX-1vTdH7ktFnFE14cIfMWRMulRcdcmpVhsQiAIHfuYTgICW-Q4Bd_vNtbBDUaNnixaRclXstnm44kwcTEU/pub?w=960&h=720)
- * Description:
+* Description:
 	- Contains an object for maintaining a menu, a tree of type storage for containing and organizing tasks and a printer class for showing tasks in different ways.
 		+ Event and term classes inherit from the storage class where they will be involved with defining the event object and the time periods in which the events are contained
-		+ Two types of printer classes (SimplePrinter and DetailedPrinter) allow for the user to specify the type of output they would like to produce. The varying outputs are an implementation of the strategy design pattern. 
+		+ Two types of printer classes (SimplePrinter and MdFilePrinter) allow for the user to specify the type of output they would like to produce. The varying outputs are an implementation of the strategy design pattern. 
+			+ MdFilePrinter used to change output location. Other locations such as to GUI may be later implemented here
 		+ Menu class manages user input to perform operations with the other classes. 
 
 ## Screenshots
@@ -76,4 +77,4 @@
 
 ## Testing
 * Tested & validated with tests in `unit_test.cpp` and tests in pertaining header files
-* Also tested via CI tester with github actions. Checks all branchs and all pull requests to master
+* Also tested via CI tester with github actions. Checks all branchs and pull requests to master
