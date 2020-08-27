@@ -2,6 +2,7 @@
 #define ___EVENT_HPP___
 
 #include "storage.hpp"
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -11,11 +12,15 @@ class event : public storage{
 	private:
 	string date;
 	string descrip;
-	vector<storage*> vect;	
+	vector<storage*> vect;
+		
 	public:
 	event (string title, int Day, int Month, int Year){
+		
 		setDate(Day, Month, Year);
 		setName(title);
+		
+
 	}
 
 	void setDate(int d, int m, int y){
@@ -69,6 +74,10 @@ class event : public storage{
 	void dummyAdd(storage* DMorY){}
 
 	int  getNum(){ return 0;}
+
+	void remove(int pos){}
+
+	void storageSort(){}
 
 };
 

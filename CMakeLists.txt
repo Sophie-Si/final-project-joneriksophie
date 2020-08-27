@@ -7,7 +7,7 @@ SET(CMAKE_CSS_STANDARD 11)
 
 ADD_EXECUTABLE(cal
     main.cpp
-    menu.cpp
+   
 )
 
 ADD_EXECUTABLE(test
