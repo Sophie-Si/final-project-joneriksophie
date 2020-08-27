@@ -32,7 +32,6 @@
 			+ Repeat schedules 
 			+ Clear the day of all edits
 			+ Get date
-
 		+ Events
 			+ Reminders
 			+ Search
@@ -52,7 +51,6 @@
 		+ Two types of printer classes (SimplePrinter and DetailedPrinter) allow for the user to specify the type of output they would like to produce. The varying outputs are an implementation of the strategy design pattern. 
 		+ Menu class manages user input to perform operations with the other classes. 
 
-
 ## Screenshots
 ### Add Event #1
 ![Add Event 1](Image1.png)
@@ -71,7 +69,6 @@
 
 ### Display output.md file
 ![Display output.md](Image6.png)
-
 
 ## Installation/Usage
 1. Run `cmake .` in terminal
