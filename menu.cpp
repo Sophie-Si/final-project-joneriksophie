@@ -82,6 +82,8 @@ void Menu::PrintMenu() {
         std::cout << "Print options: " << std::endl;
         std::cout << "a) Print event" << std::endl;
         std::cout << "b) Print events for month" << std::endl;
+	std::cout << "c) Print events for year" << std::endl;
+	std::cout << "d) Print events for all time" << std::endl;
         std::cout << "Enter option: " << std::endl;
 
         std::cin >> option;
@@ -154,6 +156,26 @@ void Menu::PrintMenu() {
 
             PrintEvent(root->getVector().at(num)->getVector().at(num2));
         }
+	else if (option == "c" || option == "C") {
+	    int yearNumber;
+            std::string wordMonth, nameEvent;
+            std::cout << "Enter year of event: " << std::endl;
+            std::cin >> yearNumber;
+            std::cout << std::endl;
+
+            std::string wordYear = std::to_string(yearNumber);
+
+            int num;
+            num = root->search(wordYear);
+            if (num == -1) {
+                std::cout << "No events in this year." << std::endl;
+                PrintMenu();
+            }
+	    PrintEvent(root->getVector().at(num));
+	}
+	else if (option == "d" || option == "D") {
+	    PrintEvent(root);
+	}
         PrintMenu();
     }
     else if (input == "q" || input == "Q") {
