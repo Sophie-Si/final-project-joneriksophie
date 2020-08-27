@@ -5,8 +5,14 @@ ADD_SUBDIRECTORY(googletest)
 
 SET(CMAKE_CSS_STANDARD 11)
 
+ADD_EXECUTABLE(cal
+    main.cpp
+    menu.cpp
+)
+
 ADD_EXECUTABLE(test
     unit_test.cpp
+    menu.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)

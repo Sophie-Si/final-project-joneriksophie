@@ -1,10 +1,6 @@
 #include "gtest/gtest.h"
-#include "menu_test.cpp"
-#include "menu.hpp"
-#include "storage.hpp"
-#include "event.hpp"
-#include "term.hpp"
-#include "menu.cpp"
+#include "menu_test.hpp"
+#include "simple_printer_test.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
