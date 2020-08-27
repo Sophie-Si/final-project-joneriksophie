@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "md_file_printer_test.hpp"
 #include "menu_test.hpp"
 #include "simple_printer_test.hpp"
 #include "event_test.hpp"
