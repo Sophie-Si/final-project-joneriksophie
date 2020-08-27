@@ -1,5 +1,7 @@
-#include "gtest/gtest.h"
+#ifndef ___MENU_TEST_HPP___
+#define ___MENU_TEST_HPP___
 
+#include "gtest/gtest.h"
 #include "menu.hpp"
 #include "storage.hpp"
 #include "event.hpp"
@@ -31,3 +33,5 @@ TEST (Menu, AddMonth) {
     EXPECT_EQ(test->getRoot()->getVector().at(0)->getNum(), 2);
     EXPECT_EQ(test->getRoot()->getVector().at(0)->getVector().at(1)->getName(), "April");
 }
+
+#endif //___MENU_TEST_HPP___

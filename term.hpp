@@ -11,7 +11,7 @@ class term : public storage{
         private:
         public:
 	 vector<storage*> vect ;
-        term (string Name, int d, int m, int y){
+        term (string Name, int d=0, int m=0, int y=0){
 		name = Name;
 		day = d;
 		month = m;
