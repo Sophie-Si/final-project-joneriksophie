@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <algorithm>
+
 using namespace std;
 
 class term : public storage{
@@ -79,6 +81,10 @@ class term : public storage{
 
 	void remove(int pos){
 		vect.erase(vect.begin()+pos);
+	}
+
+	void storageSort(){
+		sort(vect.begin(), vect.end());
 	}
 
 

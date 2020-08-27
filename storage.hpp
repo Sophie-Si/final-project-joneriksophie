@@ -40,6 +40,9 @@ class storage{
 
 	virtual void remove(int pos) =0;
 
+	virtual void storageSort() =0;
+
+
 };
 
 
