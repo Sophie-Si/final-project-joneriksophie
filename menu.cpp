@@ -269,3 +269,24 @@ bool Menu::exist(string nameEvent, string wordMonth, string wordYear) {
     }
     return false;
 }
+
+
+void Menu::annualEventCreation(storage* EventA){
+		int count =0;
+		string input;
+                bool valid = false;
+                if(!valid){
+                        cout << "how many years do you want to repeat this event? " <<endl;
+                        cin >> input;
+                        cout << endl;
+                        if ((0  == stoi(input) && input == "0")|| stoi(input) !=  0){
+                                valid = true;
+                        }
+                }
+
+                for (int i = 1; i<input+1 ; ++i){
+			AddObject(new event(EventA->getName(), EventA->getDay(), EventA->getMonth(), EventA->getYear()+i));
+			
+                }
+
+}
