@@ -77,4 +77,4 @@
 
 ## Testing
 * Tested & validated with tests in `unit_test.cpp` and tests in pertaining header files
-* Also tested via CI tester with github actions. Checks all branchs and pull requests to master
+* Also tested via CI tester with github actions. Checks all branches and pull requests to master
