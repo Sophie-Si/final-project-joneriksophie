@@ -64,13 +64,13 @@
 ## Class Diagram
 ![resources](https://docs.google.com/drawings/d/e/2PACX-1vTdH7ktFnFE14cIfMWRMulRcdcmpVhsQiAIHfuYTgICW-Q4Bd_vNtbBDUaNnixaRclXstnm44kwcTEU/pub?w=960&h=720)
 * Description:
-	- Contains an object for maintaining a menu, a tree of type storage for containing and organizing tasks and a printer class for showing tasks in different ways.
+	- Contains an object for maintaining a menu, a tree of type storage for containing and organizing tasks, and a printer class for showing tasks in different ways.
 		+ Event and term classes inherit from the storage class where they will be involved with defining the event object and the time periods in which the events are contained
 		+ Two types of printer classes (SimplePrinter and MdFilePrinter) allow for the user to specify the type of output they would like to produce. The varying outputs are an implementation of the strategy design pattern. 
 			+ MdFilePrinter used to change output location. Other locations such as to GUI may be later implemented here
 		+ Menu class manages user input to perform operations with the other classes. 
 
-## Screenshots
+## Screenshots / Demo of Code
 ### Add Event #1
 ![Add Event 1](Image1.png)
 
@@ -88,6 +88,9 @@
 
 ### Display output.md file
 ![Display output.md](Image6.png)
+
+### Yearly recurring scheduling and printing events from all-time
+![Display print](Image7.png)
 
 ## Installation/Usage
 1. Run `cmake3 .` in terminal
