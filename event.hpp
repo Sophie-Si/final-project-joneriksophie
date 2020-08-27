@@ -70,6 +70,7 @@ class event : public storage{
 
 	int  getNum(){ return 0;}
 
+	void remove(int pos){}
 };
 
 

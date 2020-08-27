@@ -37,6 +37,9 @@ class storage{
         virtual void dummyAdd(storage* DMory)=0;
 
         virtual int getNum() = 0;
+
+	virtual void remove(int pos) =0;
+
 };
 
 

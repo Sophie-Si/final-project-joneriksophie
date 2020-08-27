@@ -77,6 +77,9 @@ class term : public storage{
 		vect.push_back(DMorY);
 	}	
 
+	void remove(int pos){
+		vect.erase(vect.begin()+pos);
+	}
 
 
 
