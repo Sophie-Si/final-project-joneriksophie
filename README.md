@@ -20,10 +20,10 @@
 	- Can look up specific dates and provide information such as any events, the day of the week, and numerical date
 	- Each day will need to have is own unique set of information that have similar foundations to each other but may contain different info as things are added or removed
 * What languages/tools/technologies do you plan to use?
-	- C++
-	- Putty
-	- Hammer remote servers
-	- Git hub
+	- C++: For coding & compilation
+	- Putty: Access server to edit files.
+	- Hammer remote servers: Store and use files for editing.
+	- Git hub: Keep track of program edit history
 * What will be the input/output of your project?
 	- Input 
 		+ Commands 
@@ -43,8 +43,7 @@
 		+ User interface/menu
 
 ## Class Diagram
- 
- ![resources](https://docs.google.com/drawings/d/e/2PACX-1vTdH7ktFnFE14cIfMWRMulRcdcmpVhsQiAIHfuYTgICW-Q4Bd_vNtbBDUaNnixaRclXstnm44kwcTEU/pub?w=960&h=720)
+![resources](https://docs.google.com/drawings/d/e/2PACX-1vTdH7ktFnFE14cIfMWRMulRcdcmpVhsQiAIHfuYTgICW-Q4Bd_vNtbBDUaNnixaRclXstnm44kwcTEU/pub?w=960&h=720)
  * Description:
 	- Contains an object for maintaining a menu, a tree of type storage for containing and organizing tasks and a printer class for showing tasks in different ways.
 		+ Event and term classes inherit from the storage class where they will be involved with defining the event object and the time periods in which the events are contained
@@ -76,4 +75,5 @@
 3. Run `cal` in terminal
 
 ## Testing
-* Tested & validated with tests in unit_test.cpp
+* Tested & validated with tests in `unit_test.cpp` and tests in pertaining header files
+* Also tested via CI tester with github actions. Checks all branchs and all pull requests to master
