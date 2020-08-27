@@ -6,10 +6,7 @@
  > Authors: [Jonathan Kim](https://github.com/jonathanykim)  
  
 ## Phase 3 - Final Sprint (8/31/20-9/4/20)
-* Add weeklyEvent Creation function
-* Add monthlyEventCreation function
-* Add dailyEventCreation function
-* Add a function to create all national holidays as events 
+* Add daily, weekly, monthly recurring event creation function
 * Save calendar data from previous usage by user / Import output.md to program
 * Implement sort for years and months
 * Finish feature to edit events
